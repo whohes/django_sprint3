@@ -1,14 +1,17 @@
 {% extends "base.html" %}
-{% block title %}
-  Публикации в категории «{{ category.name }}»
-{% endblock %}
-{% block content %}
-<h1>Публикации в категории «{{ category.name }}»</h1>
-<p class="mb-5">{{ category.description }}</p>
-{% for post in post_list %}
-  <article class="mb-5">  
-    {% include "includes/post_card.html" %}
-  </article>   
-{% endfor %}
 
+{% block title %}
+  Лента записей — {{ category.title }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="mb-5">Категория: {{ category.title }}</h1>
+  <p>Идентификатор: {{ category.slug }}</p>
+  <p>Местоположение: {{ category.location.name }}</p> 
+
+  {% for post in posts %}
+    <article class="mb-5">  
+      {% include "includes/post_card.html" %}
+    </article>   
+  {% endfor %}
 {% endblock %}
